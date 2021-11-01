@@ -1,0 +1,12 @@
+#this playbook shows the usecase of tags in ansible
+#when you run ansible playbook by passing tag, only that specific task will run and all other tasks will be skipped.
+---
+- hosts: webserver
+  become: true
+  become_user: root
+  tasks:
+  - name: find uptime
+    command: uptime
+    tags: Harish
+  - name: find disk usage
+    command: df -h
